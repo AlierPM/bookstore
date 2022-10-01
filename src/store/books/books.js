@@ -19,6 +19,16 @@ export const initialState = [
     title: 'Power of the Blood',
     author: 'Mary K. Bartex',
   },
+  {
+    id: 4,
+    title: 'Power of your mind',
+    author: 'Ps.Chris Oyahkilome',
+  },
+  {
+    id: 5,
+    title: 'Evidence for the Resurrrection of Jesus Christ',
+    author: 'Jose McDwell',
+  },
 ];
 
 // Reducer Function
