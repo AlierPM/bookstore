@@ -1,17 +1,21 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => (
-  <nav>
-    <ul className="nav-items">
-      <li className="nav-item">
-        <Link to="/">BOOKS</Link>
-      </li>
-      <li className="nav-item">
-        <Link to="/categories">CATEGORIES</Link>
-      </li>
-    </ul>
-  </nav>
-);
+function Navbar() {
+  return (
+    <nav>
+      <Link to="/" className="title">
+        Bookstore CMS
+      </Link>
 
+      <ul>
+        <li>
+          <Link to="/book">BOOKS</Link>
+        </li>
+        <li>
+          <Link to="/Category">Category</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
 export default Navbar;
