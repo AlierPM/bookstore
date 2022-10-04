@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Status } from '../Redux/categories/categories';
