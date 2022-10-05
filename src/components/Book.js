@@ -1,28 +1,28 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RemoveBook } from '../Redux/Books/books';
+import { removeBook } from '../Redux/Books/books';
 
-function Book() {
-  const books = useSelector((state) => state.books.books);
-  useEffect(() => {}, [books]);
+export default function Book() {
+  const { books } = useSelector((state) => state.books);
   const dispatch = useDispatch();
-  const handleDelete = (id) => {
-    dispatch(RemoveBook(id));
+  const deleteBookHandler = (id) => {
+    dispatch(removeBook(id));
   };
+  if (!books) return <p>No Books Available!</p>;
   return (
-    <div className="booksList">
-      {books.map((Book) => (
-        <div className="prevBooks" key={Book.id}>
-          {Book.title}
-          {Book.author}
-          {Book.category}
-          <button type="button" onClick={() => handleDelete(Book.id)}>
-            Remove button
+    <>
+      {books.map((book) => (
+        <div key={book.id}>
+          &quot;
+          {book.title}
+          &quot; &nbsp; by &nbsp;
+          {book.author}
+          {book.category}
+          <button type="button" onClick={() => deleteBookHandler(book.id)}>
+            Remove
           </button>
         </div>
       ))}
-    </div>
+    </>
   );
 }
-
-export default Book;
