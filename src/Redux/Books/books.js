@@ -1,54 +1,64 @@
-export const ADD_BOOK = 'Books/books/ADD_BOOK';
-export const REMOVE_BOOK = 'Books/books/REMOVE_BOOK  ';
+/* eslint-disable operator-linebreak */
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const initialState = {
-  books: [
-    {
-      id: 1,
-      title: 'Jesus Loves you',
-      author: 'Mr.Forgiven',
-      category: 'Life',
+const url =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/ZbjHn9rW1ZMiLoLVjFhc/books/';
+const initialState = { books: [] };
+export const getBooks = createAsyncThunk('books/getbooks', async () => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const books = [
+    Object.keys(data).map((key) => ({ id: key, ...data[key][0] })),
+  ];
+  return books;
+});
+export const addBook = createAsyncThunk(
+  'books/addBook',
+  async (payload, thunkAPI) => {
+    await fetch(`${url}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: payload.id,
+        title: payload.title,
+        author: payload.author,
+        category: payload.category,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    }).then(() => thunkAPI.dispatch(getBooks()));
+    const { books } = thunkAPI.getState().books;
+    return books;
+  },
+);
+export const removeBook = createAsyncThunk(
+  'books/removeBook',
+  async (payload, thunkAPI) => {
+    await fetch(`${url}${payload}`, { method: 'DELETE' }).then(() =>
+      thunkAPI.dispatch(getBooks()),
+    );
+    const { books } = thunkAPI.getState().books;
+    return books;
+  },
+);
+const bookSlice = createSlice({
+  name: 'book',
+  initialState,
+  reducers: {},
+  extraReducers: {
+    [getBooks.fulfilled]: (state, action) => {
+      const updatedState = state;
+      const newStore = action.payload[0];
+      updatedState.books = newStore;
     },
-    {
-      id: 2,
-      title: 'All men need life',
-      author: 'Dr.Truciano',
-      category: 'Life',
+    [addBook.fulfilled]: (state, action) => {
+      const updatedState = state;
+      updatedState.books = action.payload;
     },
-  ],
-};
-
-const bookReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_BOOK:
-      return {
-        ...state,
-
-        books: [...state.books, action.payload],
-      };
-
-    case REMOVE_BOOK:
-      return {
-        ...state,
-        books: state.books.filter((book) => book.id !== action.payload),
-      };
-    default:
-      return state;
-  }
-};
-
-export const AddBook = (values) => (dispatch) => {
-  dispatch({
-    type: ADD_BOOK,
-    payload: values,
-  });
-};
-
-export const RemoveBook = (id) => (dispatch) => {
-  dispatch({
-    type: REMOVE_BOOK,
-    payload: id,
-  });
-};
-
-export default bookReducer;
+    [removeBook.fulfilled]: (state, action) => {
+      const updatedState = state;
+      updatedState.books = action.payload;
+    },
+  },
+});
+export default bookSlice.reducer;
