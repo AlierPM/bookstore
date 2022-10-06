@@ -1,20 +1,26 @@
+import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import classes from '../Styles/Navbar.module.css';
 
 function Navbar() {
   return (
-    <nav>
-      <Link to="/" className="title">
+    <nav className={classes.navbar}>
+      <Link to="/" className={classes.logo}>
         Bookstore CMS
       </Link>
 
-      <ul>
-        <li>
-          <Link to="/book">BOOKS</Link>
-        </li>
-        <li>
-          <Link to="/Category">Category</Link>
-        </li>
-      </ul>
+      <div className={classes.navigation}>
+        <Link to="/book" className="book">
+          BOOKS
+        </Link>
+
+        <Link to="/Category" className="category">
+          Category
+        </Link>
+      </div>
+      <div className={classes.iconDiv}>
+        <FaUserAlt className={classes.icon} />
+      </div>
     </nav>
   );
 }
