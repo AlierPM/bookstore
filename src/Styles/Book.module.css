@@ -95,22 +95,11 @@
   letter-spacing: normal;
   color: #4386bf;
   background-color: inherit;
-
-  /* border: 1px solid #e8e8e8; */
   border: none;
   padding-right: 5em;
 }
 
 .lastBtn {
-  border: none;
-}
-
-.chart-wrapper {
-  border: none;
-}
-
-.chart {
-  overflow: hidden;
   border: none;
 }
 
