@@ -21,6 +21,7 @@ export default function Chart(props) {
       innerRadius="30"
       height="80"
       width="80"
+      border="none"
       dataSet={dataSet}
       radius="38"
       subClass="chart"

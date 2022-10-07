@@ -17,11 +17,7 @@ body {
 
 .chart {
   max-width: 100px;
-  border: none;
-}
-
-.tsdev-donut-chart .chart-wrapper {
-  border: none;
+  overflow: hidden;
 }
 
 .btn {
@@ -43,4 +39,8 @@ body {
 .btn:active {
   background-color: hsl(206, 100%, 30%);
   color: #fff;
+}
+.tsdev-donut-chart .chart-wrapper {
+  overflow: hidden;
+  border: none;
 }

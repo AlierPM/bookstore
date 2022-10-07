@@ -19,12 +19,13 @@
 .chart {
   width: 100px;
   height: 100px;
+  outline-style: none;
 }
 
 .cat {
   width: 3.063rem;
   height: 1.125rem;
-  margin: 0 2.438rem 0 0;
+  margin: 0 2.438rem 0 1rem;
   opacity: 0.5;
   font-size: 0.875rem;
   font-weight: bold;
@@ -38,7 +39,7 @@
 .title {
   width: 20.313rem;
   height: 1.813rem;
-  margin: 0.188rem 20.188rem 0 0;
+  margin: 0 2.438rem 0 1rem;
   font-family: 'RobotoSlab', sans-serif;
   font-size: 1.375rem;
   font-weight: bold;
@@ -51,7 +52,7 @@
 .author {
   width: 6.688rem;
   height: 1.188rem;
-  margin: 0.25rem 0 0;
+  margin: 0 2.438rem 0 1rem;
   font-family: 'RobotoSlab', sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
@@ -60,6 +61,23 @@
   line-height: normal;
   letter-spacing: normal;
   color: #4386bf;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 2.438rem 0 0.7rem;
+}
+.line {
+  margin-right: 0.938rem;
+  color: #e8e8e8;
+}
+.line2 {
+  margin-right: 0.938rem;
+  color: #e8e8e8;
+  font-size: 4.375rem;
+  width: 0.125rem;
 }
 
 .btns {
@@ -74,9 +92,9 @@
   line-height: normal;
   letter-spacing: normal;
   color: #4386bf;
-  border: none;
   background-color: inherit;
-  border-right: 1px solid #e8e8e8;
+  /* border: 1px solid #e8e8e8; */
+  border: none;
   padding-right: 5em;
 }
 
@@ -84,10 +102,19 @@
   border: none;
 }
 
+.chart-wrapper {
+  border: none;
+}
+
+.chart {
+  overflow: hidden;
+  border: none;
+}
 .percentage {
   display: flex;
   align-items: center;
   gap: 1em;
+  border: none;
 }
 
 .percentageNumber {
@@ -146,4 +173,15 @@
   line-height: normal;
   letter-spacing: -0.4px;
   color: #121212;
+}
+
+.tsdev-donut-chart .chart-wrapper {
+  overflow: hidden;
+  border: none;
+}
+
+.vline {
+  color: red;
+  width: 0;
+  height: 4.375rem;
 }

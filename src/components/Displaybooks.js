@@ -31,6 +31,7 @@ export default function Form() {
   };
   return (
     <>
+      <hr />
       <h2 className={classes.header}>Add A Book</h2>
       <form className={classes.form} onSubmit={addBookHandler}>
         <input

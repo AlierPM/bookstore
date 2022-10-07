@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBook } from '../Redux/Books/books';
@@ -21,10 +22,11 @@ export default function Book() {
               <p className={classes.title}>{book.title}</p>
               <p className={classes.author}>{book.author}</p>
               &nbsp;
-              <div>
+              <div className={classes.row}>
                 <button className={classes.btns} type="button">
                   Comments
                 </button>
+                <div className={classes.line}>&#124;</div>
                 <button
                   className={classes.btns}
                   type="button"
@@ -32,6 +34,7 @@ export default function Book() {
                 >
                   Remove
                 </button>
+                <div className={classes.line}>&#124;</div>
                 <button
                   className={`${classes.btns} ${classes.lastBtn}`}
                   type="button"
@@ -46,11 +49,11 @@ export default function Book() {
               <Chart data={book.id} />
             </div>
             <div className={classes.percentageData}>
-              {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
               <p className={classes.percentageNumber}>{Math.floor(book.id)}%</p>
               <p className={classes.percentageComplete}>Completed</p>
             </div>
           </div>
+          <hr className={classes.vline} />
           <div className={classes.chapters}>
             <p className={classes.chapter}>CURRENT CHAPTER</p>
             <p className={classes.currentChapter}>
