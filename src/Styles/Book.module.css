@@ -69,10 +69,12 @@
   align-items: center;
   margin: 0 2.438rem 0 0.7rem;
 }
+
 .line {
   margin-right: 0.938rem;
   color: #e8e8e8;
 }
+
 .line2 {
   margin-right: 0.938rem;
   color: #e8e8e8;
@@ -93,6 +95,7 @@
   letter-spacing: normal;
   color: #4386bf;
   background-color: inherit;
+
   /* border: 1px solid #e8e8e8; */
   border: none;
   padding-right: 5em;
@@ -110,6 +113,7 @@
   overflow: hidden;
   border: none;
 }
+
 .percentage {
   display: flex;
   align-items: center;
